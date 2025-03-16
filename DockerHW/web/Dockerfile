@@ -2,8 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY web/ app
+COPY web/ /app/
+COPY web/requirements.txt /app/
 
-RUN pip install -r requirements.txt
+RUN pip install -r /app/requirements.txt
 
-CMD ["python", "main.py"]
+RUN chmod +x /app/main.py
+
+CMD ["python", "/app/main.py"]
